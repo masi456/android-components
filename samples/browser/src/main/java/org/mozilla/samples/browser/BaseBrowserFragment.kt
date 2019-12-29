@@ -123,14 +123,17 @@ abstract class BaseBrowserFragment : Fragment(), UserInteractionHandler {
 
         val scrollFeature = CoordinateScrollingFeature(components.sessionManager, layout.engineView, layout.toolbar)
 
+        val contextMenuCandidates = ContextMenuCandidate.defaultCandidates(
+            requireContext(),
+            components.tabsUseCases,
+            components.contextMenuUseCases,
+            layout) +
+            ContextMenuCandidate.createOpenInExternalAppCandidate(requireContext(), components.appLinksUseCases)
+
         val contextMenuFeature = ContextMenuFeature(
             fragmentManager = requireFragmentManager(),
             store = components.store,
-            candidates = ContextMenuCandidate.defaultCandidates(
-                requireContext(),
-                components.tabsUseCases,
-                components.contextMenuUseCases,
-                layout),
+            candidates = contextMenuCandidates,
             engineView = layout.engineView,
             useCases = components.contextMenuUseCases)
 
