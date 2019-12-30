@@ -107,6 +107,8 @@ permalink: /changelog/
   // add this call in the RequestInterceptor
   context.components.appLinksInterceptor.onLaunchIntentRequest(engineSession, uri, hasUserGesture, isSameDomain)
   ```
+* **feature-app-links**
+ * Introduce a `ContextMenuCandidate` to open links in the corresponding external app, if installed
 
 * **support-telemetry-sync**
   * Added new telemetry ping, to support password sync: `passwords_sync`.
