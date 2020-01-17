@@ -202,6 +202,13 @@ class AppLinksUseCases(
         )
     }
 
+    val appLinkRedirectIncludeInstall: GetAppLinkRedirect by lazy {
+        GetAppLinkRedirect(
+            includeHttpAppLinks = true,
+            ignoreDefaultBrowser = false,
+            includeInstallAppFallback = true
+        )
+    }
     private data class RedirectData(
         val appIntent: Intent? = null,
         val fallbackIntent: Intent? = null,
