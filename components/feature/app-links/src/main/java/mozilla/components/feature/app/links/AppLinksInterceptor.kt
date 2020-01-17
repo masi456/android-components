@@ -65,7 +65,9 @@ class AppLinksInterceptor(
         val result = handleRedirect(redirect, uri)
         if (redirect.isRedirect()) {
             if (launchFromInterceptor && result is RequestInterceptor.InterceptionResponse.AppIntent) {
-                useCases.openAppLink(result.appIntent)
+                val intent = result.appIntent
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                useCases.openAppLink(intent)
             }
 
             return result
