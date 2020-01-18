@@ -123,12 +123,10 @@ data class ContextMenuCandidate(
                     val appIntent = redirect.appIntent
                     val marketPlaceIntent = redirect.marketplaceIntent
                     if (appIntent != null) {
-                         appIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                         appLinksUseCases.openAppLink(appIntent)
+                        appLinksUseCases.openAppLink(appIntent)
                     }
                     else if (marketPlaceIntent != null) {
-                        marketPlaceIntent .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        appLinksUseCases.openAppLink(marketPlaceIntent )
+                        appLinksUseCases.openAppLink(marketPlaceIntent)
                     }
                 }
         )
